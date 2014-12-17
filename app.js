@@ -6,7 +6,10 @@ var express = require('express')
     , bodyParser = require('body-parser')
     , routes = require('./routes/index')
     , users = require('./routes/users')
-    , hb = require('express-handlebars');
+    , hb = require('express-handlebars')
+    , mongoose = require('mongoose');
+
+mongoose.connect('mongodb://levassio:test@ds027741.mongolab.com:27741/standupped');
 
 var app = express();
 
