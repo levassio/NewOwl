@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
-
-var standupSchema = new Schema({
+var standupSchema = new mongoose.Schema({
 	memberName: String,
 	project: String,
 	workYesterday: String,
@@ -10,3 +8,5 @@ var standupSchema = new Schema({
 	impediment: String,
 	createdOn: { type: Date, default: Date.now }
 });
+
+module.exports = mongoose.model('Standup', standupSchema);
