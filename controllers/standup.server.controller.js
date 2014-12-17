@@ -1,6 +1,6 @@
 var Standup = require('../models/standup.server.model.js');
 
-exports.create = function (req, res) {
+exports.create = function (req, res, next) {
 	var entry = new Standup({
 		memberName: req.body.memberName,
 		project: req.body.project,
@@ -9,9 +9,14 @@ exports.create = function (req, res) {
 		impediment: req.body.impediment
 	});
 
-	entry.save();
+	entry.save(function (err) {
+		if (err) {
+			next(new Error(err));
+		} else {
+			res.redirect(301, '/');
+		}
+	});
 
-	res.redirect(301, '/');
 };
 
 exports.getNote = function (req, res) {
