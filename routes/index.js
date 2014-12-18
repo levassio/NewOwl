@@ -7,7 +7,9 @@ router.get('/', function (req, res) {
     res.render('index', {title: 'Express'});
 });
 
-router.get('/newnote', standupCtrl.getNote);
+router.get('/newnote', function (req, res) {
+    res.render('newnote', { title: 'Standup - New Note' });
+});
 
 router.post('/newnote', standupCtrl.create);
 
