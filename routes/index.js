@@ -3,9 +3,8 @@ var express = require('express'),
 
 var router = express.Router();
 
-router.get('/', function (req, res) {
-    res.render('index', {title: 'Express'});
-});
+router.get('/', standupCtrl.list);
+router.post('/', standupCtrl.filterByMember);
 
 router.get('/newnote', function (req, res) {
     res.render('newnote', { title: 'Standup - New Note' });
